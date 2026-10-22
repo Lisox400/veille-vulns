@@ -1,0 +1,36 @@
+# Copier ce fichier en config.toml puis l'adapter.
+# La clé API NVD n'est PAS stockée ici : elle est lue depuis la variable
+# d'environnement NVD_API_KEY.
+
+[general]
+# Dossiers relatifs à l'emplacement de ce fichier de configuration.
+data_dir = "data"          # cache SQLite et catalogue CWE
+reports_dir = "reports"    # rapports générés
+first_run_hours = 24       # fenêtre de recherche lors du tout premier lancement
+overlap_hours = 2          # recouvrement avec la fenêtre précédente (retards d'indexation NVD)
+timeout = 30               # délai maximal d'une requête HTTP, en secondes
+
+[filters]
+min_cvss = 0.0             # score CVSS minimum (0 = pas de filtre)
+include_unscored = true    # garder les CVE pas encore notées par NVD (section à part)
+only_exploited = false     # n'afficher que les failles présentes dans CISA KEV
+always_keep_exploited = true  # une faille exploitée n'est jamais écartée par min_cvss
+# Mots-clés produits/éditeurs (insensibles à la casse), cherchés dans la
+# description, les produits (NVD, CVE.org, KEV, OSV), les CPE et les avis
+# CERT-FR. Une CVE est gardée si elle contient AU MOINS UN mot-clé.
+# Une expression de plusieurs mots est cherchée telle quelle :
+# "exchange server" correspond aussi au CPE microsoft:exchange_server.
+# Liste vide = pas de filtre.
+keywords = []
+# Exemple : keywords = ["fortinet", "microsoft exchange", "openssl", "ivanti"]
+exclude_keywords = []
+# Exemple : exclude_keywords = ["wordpress plugin"]
+
+[sources]
+# Sources complémentaires (NVD et CISA KEV sont toujours interrogées).
+epss = true      # FIRST EPSS : probabilité d'exploitation
+certfr = true    # CERT-FR : avis et alertes en français, sections Solution
+osv = true       # OSV : versions corrigées des paquets open source
+cveorg = true    # CVE.org : produits/versions déclarés par le CNA quand NVD n'a pas de CPE
+cwe = true       # catalogue CWE du MITRE (téléchargé, vérifié une fois par semaine)
+workers = 8      # requêtes parallèles pour OSV / CVE.org / CERT-FR

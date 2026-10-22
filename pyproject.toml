@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "veille-vulns"
+version = "0.3.0"
+description = "Outil de veille sur les vulnérabilités à partir de sources publiques et gratuites"
+readme = "README.md"
+authors = [{ name = "lisox" }]
+license = "MIT"
+keywords = ["cve", "vulnerability", "security", "nvd", "cisa-kev", "epss", "cert-fr", "cwe"]
+requires-python = ">=3.11"
+dependencies = [
+    "requests>=2.31",
+]
+
+[project.urls]
+Homepage = "https://github.com/Lisox400/veille-vulns"
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+veille = "veille.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["veille*"]

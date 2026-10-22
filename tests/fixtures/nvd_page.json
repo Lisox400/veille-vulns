@@ -1,0 +1,54 @@
+{
+  "resultsPerPage": 2, "startIndex": 0, "totalResults": 2, "format": "NVD_CVE", "version": "2.0",
+  "vulnerabilities": [
+    {"cve": {
+      "id": "CVE-2026-0001",
+      "published": "2026-10-21T14:15:07.123",
+      "lastModified": "2026-10-22T08:00:00.000",
+      "vulnStatus": "Analyzed",
+      "descriptions": [
+        {"lang": "es", "value": "Descripción"},
+        {"lang": "en", "value": "SQL injection in Example Server allows remote attackers to execute arbitrary SQL."}
+      ],
+      "metrics": {
+        "cvssMetricV40": [{"source": "cna@example.com", "type": "Secondary",
+          "cvssData": {"version": "4.0", "baseScore": 9.3, "baseSeverity": "CRITICAL",
+            "vectorString": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:N/SI:N/SA:N"}}],
+        "cvssMetricV31": [
+          {"source": "cna@example.com", "type": "Secondary",
+           "cvssData": {"version": "3.1", "baseScore": 8.8, "baseSeverity": "HIGH",
+             "vectorString": "CVSS:3.1/AV:N/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:H"}},
+          {"source": "nvd@nist.gov", "type": "Primary",
+           "cvssData": {"version": "3.1", "baseScore": 9.8, "baseSeverity": "CRITICAL",
+             "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"}}
+        ]
+      },
+      "weaknesses": [
+        {"source": "cna@example.com", "type": "Secondary", "description": [{"lang": "en", "value": "CWE-20"}]},
+        {"source": "nvd@nist.gov", "type": "Primary", "description": [{"lang": "en", "value": "CWE-89"}, {"lang": "en", "value": "NVD-CWE-Other"}]}
+      ],
+      "configurations": [{"nodes": [{"operator": "OR", "negate": false, "cpeMatch": [
+        {"vulnerable": true, "criteria": "cpe:2.3:a:example_corp:example_server:*:*:*:*:*:*:*:*",
+         "versionStartIncluding": "2.0", "versionEndExcluding": "2.4.1"},
+        {"vulnerable": true, "criteria": "cpe:2.3:a:example_corp:example_server:3.0:*:*:*:*:*:*:*"},
+        {"vulnerable": false, "criteria": "cpe:2.3:o:linux:linux_kernel:-:*:*:*:*:*:*:*"},
+        {"vulnerable": true, "criteria": "cpe:2.3:a:other\\:vendor:tool:-:*:*:*:*:*:*:*"}
+      ]}]}],
+      "references": [
+        {"url": "https://example.com/advisory", "source": "cna@example.com", "tags": ["Vendor Advisory", "Patch"]},
+        {"url": "https://github.com/x/poc", "source": "cna@example.com", "tags": ["Exploit", "Third Party Advisory"]},
+        {"url": "https://example.com/blog", "source": "cna@example.com"}
+      ]
+    }},
+    {"cve": {
+      "id": "CVE-2026-0002",
+      "published": "2026-10-22T09:00:00.000",
+      "lastModified": "2026-10-22T09:00:00.000",
+      "vulnStatus": "Awaiting Analysis",
+      "descriptions": [{"lang": "en", "value": "  Legacy bug.  "}],
+      "metrics": {"cvssMetricV2": [{"source": "nvd@nist.gov", "type": "Primary", "baseSeverity": "MEDIUM",
+        "cvssData": {"version": "2.0", "baseScore": 5.0, "vectorString": "AV:N/AC:L/Au:N/C:P/I:N/A:N"}}]},
+      "references": []
+    }}
+  ]
+}
